@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed:int = 40
+var speed:int = 50
 var facing_direction:String = 'down'
 var direction:Vector2
 var axe_dmg:int = 30

@@ -1,12 +1,7 @@
 res://enities/player.tscn
 res://levels/level_1.tscn
 res://objects/tree.tscn
-res://spawners/tree_spawner.tscn
-res://objects/ground.tscn
-res://ui/tile_select.tscn
-res://enities/player.gd
-res://objects/tree.gd
 res://objects/log.tscn
+res://ui/tile_select.tscn
 res://ui/cursor.tscn
-res://ui/cursor.gd
-res://levels/level.gd
+res://enities/player.gd
