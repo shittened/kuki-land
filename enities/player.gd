@@ -7,6 +7,7 @@ var axe_dmg:int = 30
 var equipped_tool:String = 'axe'
 var axe_distance:int = 60
 var luck:int = 10
+var force: int = 30000
 
 func Animations():
 	if direction.x > 0:
@@ -28,7 +29,7 @@ func Animations():
 func Movement():
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").limit_length()
 	velocity = direction * speed
-	move_and_slide()
+	#move_and_slide()
 
 func ChopTree(selected_tile):
 	if equipped_tool != 'axe':
@@ -65,6 +66,17 @@ func PickUp():
 		if $origin.global_position.distance_to(item.global_position) <= 20:
 			item.visible = false
 			item.queue_free()
+
+func Push():
+	if not self.move_and_slide():
+		return
+	if direction == Vector2(0, 0):
+		return
+	for i in self.get_slide_collision_count():
+		var col = self.get_slide_collision(i)
+		if col.get_collider() is RigidBody2D:
+			var mass = col.get_collider().mass / 100
+			col.get_collider().apply_force(col.get_normal() * -force) #- Vector2(mass, mass))	
 	
 func _ready():
 	$AnimatedSprite2D.animation = 'idle_down'
@@ -74,4 +86,5 @@ func _physics_process(delta):
 	Animations()
 	Movement()
 	Interact()
-	PickUp()
+	#PickUp()
+	Push()

@@ -107,12 +107,12 @@ func CheckTile():
 		
 	Maps.selected_tile.position = tile
 	
-func ZOrder(objects):
+func ZOrder(objects, amount):
 	for object in self.get_node(objects).get_children():
 		if object.get_node('origin').global_position.y > $player.get_node('origin').global_position.y:
-			object.z_index = $player.z_index + 1
+			object.z_index = $player.z_index + amount
 		else:
-			object.z_index = $player.z_index - 1
+			object.z_index = $player.z_index - amount
 	
 func _ready():
 	var cursor = cursor_scene.instantiate()
@@ -131,8 +131,8 @@ func _ready():
 	#print(map)
 		
 func _process(delta):
-	ZOrder('trees')
-	ZOrder('items')
+	ZOrder('trees', 1)
+	ZOrder('items', 2)
 			
 	CheckTile()
 	#print(selected_tile)

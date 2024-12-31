@@ -5,3 +5,5 @@ res://objects/log.tscn
 res://ui/tile_select.tscn
 res://ui/cursor.tscn
 res://enities/player.gd
+res://objects/log.gd
+res://levels/level.gd
