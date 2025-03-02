@@ -8,6 +8,7 @@ radius = 8.0
 height = 32.0
 
 [node name="log" type="RigidBody2D"]
+input_pickable = true
 mass = 20.0
 gravity_scale = 0.0
 script = ExtResource("1_fiqnj")
@@ -21,3 +22,6 @@ texture = ExtResource("1_ucbrr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_53fxm")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
