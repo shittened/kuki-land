@@ -1,7 +1,0 @@
-res://enities/player.tscn
-res://levels/level_1.tscn
-res://objects/tree.tscn
-res://objects/log.tscn
-res://ui/tile_select.tscn
-res://ui/cursor.tscn
-res://enities/player.gd
