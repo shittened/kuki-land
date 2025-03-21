@@ -4,22 +4,34 @@ from keybindings import Keybindings
 import sys
 from map import Map
 from player import Player
+from debug import Debug
 
-running = True
-player_animation_timer = 0
+class Game:
+    def __init__(self):
+        self.running = True
+        self.player_animation_timer = 0
+        self.offset = [0, 0]
 
-pg.init()
+        pg.init()
 
-screen = Screen()
-map = Map()
-player = Player(100, 100)
+        self.screen = Screen()
+        self.map = Map()
+        self.player = Player()
+        self.player.LoadAnimations()
 
-while running:
-    map.Draw(screen)
-    player_animation_timer = player.Animate(player_animation_timer)
-    player.Draw(screen)
-    screen.Update()
-    running = Keybindings()
+    def Run(self):
+        while self.running:
+            self.screen.screen.fill('blue')
+            self.map.Draw(self.screen, self.offset)
+            self.player_animation_timer = self.player.Animate(self.player_animation_timer, self.screen.dt)
+            self.player.Draw(self.screen)
+            Debug(self.screen)
+            self.screen.Update()
+            self.running = Keybindings(self.player, self.offset, self.screen.dt)
 
-pg.quit()
-sys.exit()
+        pg.quit()
+        sys.exit()
+
+game = Game()
+
+game.Run()

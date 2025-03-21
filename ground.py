@@ -7,3 +7,7 @@ class Ground(pg.sprite.Sprite):
         self.image = pg.transform.scale_by(self.image, 2)
         self.rect = self.image.get_rect()
         self.rect.topleft = (x * self.rect.width, y * self.rect.height)
+        self.initial_pos = self.rect.topleft
+
+    def update(self, offset):
+        self.rect.topleft = (self.initial_pos[0] + offset[0], self.initial_pos[1] + offset[1])

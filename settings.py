@@ -4,3 +4,4 @@ resolution = (1280, 720)
 fps = 60
 fullscreen = True
 vsync = 1
+show_fps = True
